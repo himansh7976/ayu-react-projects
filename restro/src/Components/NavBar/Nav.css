@@ -1,0 +1,38 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.nav-container {
+    background-color: black;
+    padding: 15px;
+    width: 100%;
+    border: 2px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.logo {
+    border: 2px solid;
+    
+
+
+}
+
+.list-element {
+   
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+
+
+}
+
+.list-element ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 15%;
+}
