@@ -2,13 +2,14 @@
 
     height: 100vh;
     width: 90%;
-    border: 2px solid;
+    border: 2px solid gray;
     margin: auto;
     margin-top: 1%;
     padding: 1%;
 }
 
 .cards {
+    cursor: pointer;
     padding: 8px;
     width: 29%;
     height: 50%;
