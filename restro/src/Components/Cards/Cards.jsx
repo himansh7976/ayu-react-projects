@@ -14,7 +14,7 @@ function Card() {
             let res = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.95250&lng=75.71050&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
             console.log(res);
             let jsn = await res.json();
-            let g = jsn.data.cards[2].card.card.gridElements.infoWithStyle.restaurants;
+            let g = jsn?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
 
             setvalue(g);
 
@@ -25,12 +25,9 @@ function Card() {
 
 
         api()
-
-
-
     }, [])
 
-    console.log(value);
+    // console.log(value);
 
     function clicked() {
         console.log("hello")
@@ -38,19 +35,58 @@ function Card() {
 
         let a = value.filter((e) =>
 
-            e.info.avgRatingString < 2
+            e.info.avgRatingString > 4
         )
-        setrateing(a);
+        setvalue(a);
 
-        console.log(a)
+        // console.log(a)
     }
+
+
+    const [input, setinput] = useState("")
+
+    let textt = (e) => {
+
+        setinput(e.target.value);
+        console.log(input)
+
+
+    }
+
+    const btnn = () => {
+        console.log(input)
+
+        setvalue(
+
+            value.filter((car) => {
+                return car.info.name == input;
+                console.log(car.info.name);
+
+            })
+        )
+
+    }
+
+
+
 
 
     return (
 
         <>
 
-            <button onClick={clicked} className='btn1' > click me</button>
+            <div className='inp'>
+                <input type='text' placeholder='Enter Restaurants Name' onChange={textt}></input>
+                <button className='btn' onClick={btnn}>Search</button>
+
+            </div>
+
+
+
+
+
+
+            <button onClick={clicked} className='btn1' >Top Rated Restro</button>
 
 
             <div className="cards-container">
