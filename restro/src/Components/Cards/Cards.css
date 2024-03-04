@@ -87,6 +87,25 @@
     color: rgb(95, 92, 92);
 }
 
-.btn2 {
-    margin-left: 50px;
+.btn1 {
+    margin-top: 10px;
+    margin-left: 50%;
+    padding: 5px;
+    background-color: skyblue;
+    border-radius: 10px;
+
+
+    border: none;
+    text-transform: uppercase;
+    transition: all ease-in-out .2s;
+}
+
+.btn1:hover {
+    background-color: rgb(3, 3, 36);
+    color: white;
+
+}
+
+.cards :hover {
+    background-color: black;
 }

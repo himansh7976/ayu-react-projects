@@ -1,44 +1,57 @@
 import './Cards.css'
 import data from '../../Utils/Data';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 function Card() {
-    const [pp, setpp] = useState([])
-
-    function clic() {
-        console.log("hello")
-        let ne = data.filter((e) => {
-            return console.log(e.info.avgRatingString > 3);
-
-        })
-        console.log(ne)
-    }
 
 
 
-    const [rate, setrateing] = useState(data);
+
+    const [value, setvalue] = useState([]);
+    const [rate, setrateing] = useState();
+
+    useEffect(() => {
+        async function api() {
+            let res = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.95250&lng=75.71050&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+            console.log(res);
+            let jsn = await res.json();
+            let g = jsn.data.cards[2].card.card.gridElements.infoWithStyle.restaurants;
+
+            setvalue(g);
+
+
+
+
+        }
+
+
+        api()
+
+
+
+    }, [])
+
+    console.log(value);
+
     function clicked() {
-        // console.log("hello")
+        console.log("hello")
 
 
-        let a = data.filter((e) =>
-            e.info.avgRatingString > 4
+        let a = value.filter((e) =>
 
-
+            e.info.avgRatingString < 2
         )
         setrateing(a);
+
         console.log(a)
-
     }
-
 
 
     return (
 
         <>
 
-            <button onClick={clicked} > click me</button>
+            <button onClick={clicked} className='btn1' > click me</button>
 
-            <button onClick={clic} className='btn2'> not clicked </button>
 
             <div className="cards-container">
 
@@ -46,7 +59,7 @@ function Card() {
 
                 {
 
-                    rate.map((data) => (
+                    value.map((data) => (
 
 
                         <div className='cards'>
